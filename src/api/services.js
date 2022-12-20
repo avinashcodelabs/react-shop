@@ -1,13 +1,37 @@
 function getProducts() {
-  return fetch(
-    "https://my-json-server.typicode.com/avinash2wards/mock-rest-api/products"
-  ).then((res) => res.json());
+  return fetch("http://api.avinashcodelabs.com/api/products")
+    .then((res) => res.json())
+    .then((data) => {
+      return data.products;
+    });
 }
 
 function getProduct(id) {
-  return fetch(
-    `https://my-json-server.typicode.com/avinash2wards/mock-rest-api/products/${id}`
-  ).then((res) => res.json());
+  return fetch(`http://api.avinashcodelabs.com/api/products/${id}`)
+    .then((res) => res.json())
+    .then((data) => data.product);
 }
 
-export { getProducts, getProduct };
+function createProduct(p) {
+  return fetch(`http://api.avinashcodelabs.com/api/products`, {
+    method: "POST",
+    body: JSON.stringify(p),
+  }).then((res) => res.json());
+}
+
+function updateProduct(p) {
+  return fetch(`http://api.avinashcodelabs.com/api/products/${p.id}`, {
+    method: "PUT",
+    body: JSON.stringify(p),
+  })
+    .then((res) => res.json())
+    .then((data) => data);
+}
+
+function deleteProduct(id) {
+  return fetch(`http://api.avinashcodelabs.com/api/products/${id}`, {
+    method: "DELETE",
+  }).then((d) => d);
+}
+
+export { getProducts, getProduct, createProduct, updateProduct, deleteProduct };

@@ -1,6 +1,6 @@
-import { Container, Navbar, Badge } from "react-bootstrap";
+import { Container, Navbar, Badge, Nav } from "react-bootstrap";
 import { FaCartPlus } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function ShopNav({ setIsCartOpen, cartItems }) {
   const totalQuantity = cartItems.reduce(
@@ -16,6 +16,11 @@ function ShopNav({ setIsCartOpen, cartItems }) {
               <img src="https://img.logoipsum.com/258.svg" />
             </Link>
           </Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link to="/manage" as={NavLink}>
+              Manage Products
+            </Nav.Link>
+          </Nav>
           <div
             onClick={() => setIsCartOpen(true)}
             style={{ cursor: "pointer" }}

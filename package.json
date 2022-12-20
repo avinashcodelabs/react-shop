@@ -5,6 +5,7 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "@avinashcodelabs/mock-api-server": "^1.1.0",
     "bootstrap": "5.2.3",
     "react": "18.2.0",
     "react-bootstrap": "^2.7.0",

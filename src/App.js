@@ -5,6 +5,9 @@ import { Container } from "react-bootstrap";
 import { ProductDetails } from "./components/ProductDetails";
 import { ProductList } from "./components/ProductList";
 import { ShopNav } from "./components/ShopNav";
+import { List } from "./components/Manage/List";
+import { Add } from "./components/Manage/Add";
+import { Edit } from "./components/Manage/Edit";
 
 export default function App() {
   const [cartItems, setCartItems] = React.useState([]);
@@ -43,6 +46,9 @@ export default function App() {
             path="/products/:id"
             element={<ProductDetails addOrUpdateCart={addOrUpdateCart} />}
           />
+          <Route path="/manage" element={<List />} />
+          <Route path="/manage/add" element={<Add />} />
+          <Route path="/manage/edit/:id" element={<Edit />} />
         </Routes>
       </Container>
     </BrowserRouter>
