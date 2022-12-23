@@ -1,8 +1,9 @@
 import React from "react";
-import { ListGroup, Container } from "react-bootstrap";
+import { ListGroup, Container, Button } from "react-bootstrap";
+import { CiCircleRemove } from "react-icons/ci";
 import { formatCurrency } from "../../utils/formatCurrency";
 
-function Cart({ cartItems }) {
+function Cart({ cartItems, removeCart }) {
   const subTotals = cartItems.map((item) => {
     return item.quantity * item.price;
   });
@@ -46,6 +47,12 @@ function Cart({ cartItems }) {
                       Subtotal :
                     </span>
                     {formatCurrency(item.price * item.quantity)}
+                    &nbsp;
+                    <CiCircleRemove
+                      style={{ cursor: "pointer", color: "red" }}
+                      size={20}
+                      onClick={() => removeCart(item.id)}
+                    ></CiCircleRemove>
                   </div>
                 </ListGroup.Item>
               );

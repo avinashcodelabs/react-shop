@@ -27,6 +27,15 @@ function App() {
       );
     }
   }
+
+  function removeCart(id) {
+    setCartItems(
+      cartItems.filter((item) => {
+        return item.id != id;
+      })
+    );
+  }
+
   return (
     <BrowserRouter>
       <ShopNav cartItems={cartItems}></ShopNav>
@@ -41,7 +50,10 @@ function App() {
             path="/products/:id"
             element={<ProductDetails addOrUpdateCart={addOrUpdateCart} />}
           />
-          <Route path="/cart" element={<Cart cartItems={cartItems} />} />
+          <Route
+            path="/cart"
+            element={<Cart cartItems={cartItems} removeCart={removeCart} />}
+          />
           <Route path="/manage" element={<List />} />
           <Route path="/manage/add" element={<Add />} />
           <Route path="/manage/edit/:id" element={<Edit />} />

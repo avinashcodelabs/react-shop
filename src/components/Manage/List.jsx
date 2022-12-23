@@ -31,43 +31,44 @@ function List() {
         </Link>
       </div>
       <ListGroup>
-        {products &&
-          products.map((product) => {
-            return (
-              <ListGroup.Item
-                key={product.id}
-                className="d-flex justify-content-between align-items-center"
-              >
-                <div>
-                  <img
-                    src={product.imgUrl}
-                    style={{
-                      width: "100px",
-                      height: "50px",
-                      objectFit: "cover",
-                    }}
-                  />
-                  <span style={{ marginLeft: "5px" }}>{product.name}</span>
-                  <span style={{ marginLeft: "5px" }} className="text-muted">
-                    {formatCurrency(product.price)}
-                  </span>
-                </div>
-                <div>
-                  <Link to={`/manage/edit/${product.id}`}>
-                    <CiEdit
+        {products
+          ? products.map((product) => {
+              return (
+                <ListGroup.Item
+                  key={product.id}
+                  className="d-flex justify-content-between align-items-center"
+                >
+                  <div>
+                    <img
+                      src={product.imgUrl}
+                      style={{
+                        width: "100px",
+                        height: "50px",
+                        objectFit: "cover",
+                      }}
+                    />
+                    <span style={{ marginLeft: "5px" }}>{product.name}</span>
+                    <span style={{ marginLeft: "5px" }} className="text-muted">
+                      {formatCurrency(product.price)}
+                    </span>
+                  </div>
+                  <div>
+                    <Link to={`/manage/edit/${product.id}`}>
+                      <CiEdit
+                        size={30}
+                        style={{ marginRight: "8px", cursor: "pointer" }}
+                      ></CiEdit>
+                    </Link>
+                    <CiSquareRemove
+                      style={{ cursor: "pointer" }}
                       size={30}
-                      style={{ marginRight: "8px", cursor: "pointer" }}
-                    ></CiEdit>
-                  </Link>
-                  <CiSquareRemove
-                    style={{ cursor: "pointer" }}
-                    size={30}
-                    onClick={() => handleDelete(product.id)}
-                  ></CiSquareRemove>
-                </div>
-              </ListGroup.Item>
-            );
-          })}
+                      onClick={() => handleDelete(product.id)}
+                    ></CiSquareRemove>
+                  </div>
+                </ListGroup.Item>
+              );
+            })
+          : "Loading the products....."}
       </ListGroup>
     </>
   );
