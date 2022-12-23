@@ -2,9 +2,9 @@ import React from "react";
 import { Button, Card } from "react-bootstrap";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { formatCurrency } from "../utils/formatCurrency";
+import { formatCurrency } from "../../utils/formatCurrency";
 import { useParams } from "react-router-dom";
-import { getProduct } from "../api/services";
+import { getProduct } from "../../api/services";
 
 function ProductDetails({ addOrUpdateCart }) {
   const [product, updateProduct] = React.useState({});

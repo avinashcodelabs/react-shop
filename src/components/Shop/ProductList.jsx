@@ -1,8 +1,8 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { Product } from "./Product";
-import { getProducts } from "../api/services";
-import {} from "react-icons/fa";
+import { getProducts } from "../../api/services";
+import { FaSpinner } from "react-icons/fa";
 
 function ProductList({ addOrUpdateCart }) {
   const [products, updateProducts] = React.useState([]);
@@ -14,7 +14,7 @@ function ProductList({ addOrUpdateCart }) {
   }, []);
 
   if (products.length === 0) {
-    return <p className="fw-bold">Loading products in a sec .....</p>;
+    return <FaSpinner size={50}></FaSpinner>;
   }
 
   return (
@@ -23,7 +23,7 @@ function ProductList({ addOrUpdateCart }) {
         {products.map((product) => {
           return (
             <Col key={product.id}>
-              <Product addOrUpdateCart={addOrUpdateCart} {...product} />
+              <Product addOrUpdateCart={addOrUpdateCart} product={product} />
             </Col>
           );
         })}

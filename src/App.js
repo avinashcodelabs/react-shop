@@ -1,27 +1,26 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Cart } from "./components/Cart";
 import { Container } from "react-bootstrap";
-import { ProductDetails } from "./components/ProductDetails";
-import { ProductList } from "./components/ProductList";
+import { ProductDetails } from "./components/Shop/ProductDetails";
+import { ProductList } from "./components/Shop/ProductList";
+import { Cart } from "./components/Shop/Cart";
 import { ShopNav } from "./components/ShopNav";
 import { List } from "./components/Manage/List";
 import { Add } from "./components/Manage/Add";
 import { Edit } from "./components/Manage/Edit";
 
-export default function App() {
+function App() {
   const [cartItems, setCartItems] = React.useState([]);
-  const [isCartOpen, setIsCartOpen] = React.useState(false);
 
-  function addOrUpdateCart(id) {
+  function addOrUpdateCart({ id, name, imgUrl, price }) {
     const itemExisted = cartItems.find((item) => item.id == id);
     if (!itemExisted) {
-      setCartItems([...cartItems, { id, quantity: 1 }]);
+      setCartItems([...cartItems, { id, name, imgUrl, price, quantity: 1 }]);
     } else {
       setCartItems(
         cartItems.map((item) => {
           if (item.id == id) {
-            return { id, quantity: item.quantity + 1 };
+            return { id, name, imgUrl, price, quantity: item.quantity + 1 };
           }
           return item;
         })
@@ -30,12 +29,8 @@ export default function App() {
   }
   return (
     <BrowserRouter>
-      <ShopNav setIsCartOpen={setIsCartOpen} cartItems={cartItems}></ShopNav>
-      <Cart
-        isCartOpen={isCartOpen}
-        setIsCartOpen={setIsCartOpen}
-        cartItems={cartItems}
-      ></Cart>
+      <ShopNav cartItems={cartItems}></ShopNav>
+
       <Container>
         <Routes>
           <Route
@@ -46,6 +41,7 @@ export default function App() {
             path="/products/:id"
             element={<ProductDetails addOrUpdateCart={addOrUpdateCart} />}
           />
+          <Route path="/cart" element={<Cart cartItems={cartItems} />} />
           <Route path="/manage" element={<List />} />
           <Route path="/manage/add" element={<Add />} />
           <Route path="/manage/edit/:id" element={<Edit />} />
@@ -54,3 +50,5 @@ export default function App() {
     </BrowserRouter>
   );
 }
+
+export { App };

@@ -21,15 +21,12 @@ function ShopNav({ setIsCartOpen, cartItems }) {
               Manage Products
             </Nav.Link>
           </Nav>
-          <div
-            onClick={() => setIsCartOpen(true)}
-            style={{ cursor: "pointer" }}
-          >
+          <Nav.Link to="/cart" as={NavLink}>
             <FaCartPlus size={30} />
             <Badge pill bg="dark">
               {totalQuantity}
             </Badge>
-          </div>
+          </Nav.Link>
         </Container>
       </Navbar>
     </>

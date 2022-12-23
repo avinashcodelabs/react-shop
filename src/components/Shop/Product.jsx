@@ -1,8 +1,9 @@
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { formatCurrency } from "../utils/formatCurrency";
+import { formatCurrency } from "../../utils/formatCurrency";
 
-function Product({ id, name, description, price, imgUrl, addOrUpdateCart }) {
+function Product({ product, addOrUpdateCart }) {
+  const { id, name, price, imgUrl } = product;
   return (
     <Card>
       <Link to={`products/${id}`}>
@@ -25,7 +26,7 @@ function Product({ id, name, description, price, imgUrl, addOrUpdateCart }) {
           size={"sm"}
           className="w-100"
           variant="primary"
-          onClick={() => addOrUpdateCart(id)}
+          onClick={() => addOrUpdateCart(product)}
         >
           Add To Cart
         </Button>
