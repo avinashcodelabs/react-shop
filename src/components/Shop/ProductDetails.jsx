@@ -45,7 +45,7 @@ function ProductDetails({ addOrUpdateCart }) {
           <Button
             variant="primary"
             className="w-100"
-            onClick={() => addOrUpdateCart(params.id)}
+            onClick={() => addOrUpdateCart(product)}
           >
             Add To Cart
           </Button>

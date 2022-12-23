@@ -1,15 +1,15 @@
 function getProducts() {
   return fetch("http://api.avinashcodelabs.com/api/products")
     .then((res) => res.json())
-    .then((data) => {
-      return data.products;
+    .then((products) => {
+      return products;
     });
 }
 
 function getProduct(id) {
   return fetch(`http://api.avinashcodelabs.com/api/products/${id}`)
     .then((res) => res.json())
-    .then((data) => data.product);
+    .then((product) => product);
 }
 
 function createProduct(p) {
