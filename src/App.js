@@ -8,6 +8,9 @@ import { ShopNav } from "./components/ShopNav";
 import { List } from "./components/Manage/List";
 import { Add } from "./components/Manage/Add";
 import { Edit } from "./components/Manage/Edit";
+import { Home } from "./components/Home";
+import { Support } from "./components/Support";
+import { Login } from "./components/Login";
 
 function App() {
   const [cartItems, setCartItems] = React.useState([]);
@@ -36,16 +39,23 @@ function App() {
     );
   }
 
+  function emptyCart() {
+    setCartItems([]);
+  }
+
   return (
     <BrowserRouter>
-      <ShopNav cartItems={cartItems}></ShopNav>
+      <ShopNav cartItems={cartItems} emptyCart={emptyCart}></ShopNav>
 
       <Container>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route
-            path="/"
+            path="/shop"
             element={<ProductList addOrUpdateCart={addOrUpdateCart} />}
           />
+          <Route path="/support" element={<Support />} />
+          <Route path="/login" element={<Login />} />
           <Route
             path="/products/:id"
             element={<ProductDetails addOrUpdateCart={addOrUpdateCart} />}

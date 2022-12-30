@@ -35,9 +35,7 @@ function Cart({ cartItems, removeCart }) {
                     &nbsp;
                     {item.name}
                     &nbsp;
-                    <span class="badge bg-secondary">{item.quantity}</span> x
-                    &nbsp;
-                    {formatCurrency(item.price)}
+                    {item.quantity} x {formatCurrency(item.price)}
                   </div>
                   <div>
                     <span
