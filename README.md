@@ -24,10 +24,10 @@ A [live deployment](https://effortless-profiterole-61f817.netlify.app/) of this 
 2. Open the react-shop directory in vscode
 3. Open integrated terminal
 4. Now, type `npm install` into terminal and hit enter
-5. After the 4th step completed, type `npm start` into terminal and hit enter
-5.1. If any sort of issues while running start or install command, issue `npm audit fix --force` to fix the version compatibility
-6. Now, you will the application up and running at http://localhost:3000/    
-7. `npm run build`: production build
+5. After the 4th step completed, type `npm start` into terminal and hit enter  
+6. If any sort of issues while running start or install command, run `npm audit fix --force` command to fix the version compatibility
+7. Now, you will the application up and running at http://localhost:3000/    
+8. `npm run build`: production build
 
 
 ## Tech Stack
